@@ -9,7 +9,7 @@ from sklearn.metrics import confusion_matrix, classification_report, ConfusionMa
 #####################  1  #######################
 
 # TODO: Set the dataset ID #################
-DATASET_OPENML_ID = "mnist_784"
+DATASET_OPENML_ID = "Fashion-MNIST"
 ############################################
 
 assert DATASET_OPENML_ID is not None, "DATASET_OPENML_ID is not set"
@@ -51,20 +51,19 @@ print(f"2. {num_classes}")
 
 # Visualize some examples from the dataset.
 # We show a few examples of training images from each class.
-# classes = [int(class_id) for class_id in np.unique(y)]
-# samples_per_class = 7
-# for cls in classes:
-#     idxs = np.flatnonzero(y == str(cls))
-#     idxs = np.random.choice(idxs, samples_per_class, replace=False)
-#     for i, idx in enumerate(idxs):
-#         plt_idx = i * num_classes + cls + 1
-#         plt.subplot(samples_per_class, num_classes, plt_idx)
-#         plt.imshow(X[idx].reshape((28, -1)).astype('uint8'), cmap='bone')
-#         # 28x28 px
-#         plt.axis('off')
-#         if i == 0:
-#             plt.title(cls)
-# plt.show()
+classes = [int(class_id) for class_id in np.unique(y)]
+samples_per_class = 7
+for cls in classes:
+    idxs = np.flatnonzero(y == str(cls))
+    idxs = np.random.choice(idxs, samples_per_class, replace=False)
+    for i, idx in enumerate(idxs):
+        plt_idx = i * num_classes + cls + 1
+        plt.subplot(samples_per_class, num_classes, plt_idx)
+        plt.imshow(X[idx].reshape((28, -1)).astype('uint8'), cmap='bone')
+        plt.axis('off')
+        if i == 0:
+            plt.title(cls)
+plt.show()
 
 
 
